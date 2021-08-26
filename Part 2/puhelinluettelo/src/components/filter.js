@@ -1,8 +1,8 @@
 const Filter = ({newSearch, searchHandler}) => {
     return (
-        <div>
-            <input onChange={searchHandler} value={newSearch} />
-        </div>
+        <section className="filter">
+            Filter numbers: <input onChange={searchHandler} value={newSearch} />
+        </section>
     );
 }
 

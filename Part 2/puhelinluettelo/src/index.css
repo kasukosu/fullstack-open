@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main.container{
+  max-width: 800px;
+  margin: auto;
+}
+
+section.filter{
+
+}
+
+input{
+  margin: 4px 0px;
+  padding: 2px;
+  border-radius: 4px;
+  border: 1px solid gray;
+}
+
+
+.success{
+  border: green 2px solid;
+  color: green;
+  padding: 0.5rem;
+
+}
+
+.error{
+  border: red 2px solid;
+  color: red;
+  padding: 0.5rem;
+}
