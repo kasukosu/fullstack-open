@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/blogs/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lMiIsImlkIjoiNjE1ZTkyZDFjZjk0NzlmMzA2MmFhM2E2IiwiaWF0IjoxNjMzNTg4MDkyfQ.DUEVrJ32dLZC2m4_Um8OLnKTIljcOEkYXdKKtYOLOao
+
+{
+    "title": "blogi",
+    "author": "kasper",
+    "url": "google.com",
+    "likes": 21301204
+}

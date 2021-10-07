@@ -36,13 +36,14 @@ const App = () => {
     const person = persons.find(e => e.name === newName);
     if(person){
       alert(`${newName} is already added to phonebook`);
-
       if(window.confirm(`${newName} is already on the list. Update the number?`)){
         const personObject = {
           name: newName,
           number: newNumber,
         }
-        personService.update(person.id, personObject)
+        const id = person.id;
+
+        personService.update(id, personObject)
         .then(updated => {
           setNewName('')
           setMessage(`Updated: ${personObject.name} - ${personObject.number}`);
@@ -70,20 +71,23 @@ const App = () => {
       .then(returnedPerson => {
         if(returnedPerson){
           setPersons(persons.concat(returnedPerson))
-        setNewName('')
-        setNewNumber('')
-        setMessage(`Added ${personObject.name}`);
-        setErrorMessage('');
+          setNewName('')
+          setNewNumber('')
+          setMessage(`Added ${personObject.name}`);
+          setErrorMessage('');
+
         }else{
           setErrorMessage(`person '${person.name}' was already added to server`)
           setMessage('');
           personService.getAll()
             .then(initialPersons => {
               setPersons(initialPersons)
-            })
+          })
         }
-
-
+      })
+      .catch(error => {
+        // pääset käsiksi palvelimen palauttamaan virheilmoitusolioon näin
+        console.log(error.response.data)
       })
 
     }
@@ -92,13 +96,13 @@ const App = () => {
 
   const removePerson = (person) => {
     console.log(person)
-    const id = person.id;
     const name = person.name;
-    if(window.confirm(`Delete ${name}`)){
+    const id = person.id;
+    if(window.confirm(`Delete ${name} - ${id}`)){
       personService.remove(id)
       .then(updatedPersons => {
         console.log(updatedPersons);
-        setPersons(persons.filter(p => p.id !== id))
+        setPersons(persons.filter(p => p.id !== person.id))
         setMessage(`Deleted ${name}`);
 
       })
